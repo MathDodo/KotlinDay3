@@ -18,9 +18,29 @@ fun main(args: Array<String>)
     p1[1] = 6.0f
     p1[2] = 1.0f
     println("p1 = $p1")
+
+    var c = ValutaConverter()
+    var euro = c::KronerToEuro
+    var dollar = c::KronerToDollar
+    var pound = c::KronerToPound
+
+    c.OutputConversion(euro, 746.12)
+    c.OutputConversion(dollar, 662.63)
+    c.OutputConversion(pound, 848.46)
+
+    var list = mutableListOf(1,3,2, 5,6,7,1,2,4,50,67,8,9,0,5,1,3, 55,552, 12)
+
+    println("Middle: " + list.Middle().toString())
+
+    var translator = Translator()
+
+    val danishToEnglishDictionary: HashMap<String, String> = hashMapOf("hej" to "hello", "farvel" to "good bye", "Hej verden!" to "Hello world")
+    val englishToDanishDictionary = danishToEnglishDictionary.entries.associateBy ({it.value}) {it.key}
+
+    val dted : (String) -> String = {danishToEnglishDictionary[it].toString()}
+    val etdd : (String) -> String = {englishToDanishDictionary[it].toString()}
+
+    translator.TranslateOutput(dted, "Hej verden!")
 }
 
-fun Multiply(x: Int, y: Int) : Int
-{
-    return  x * y
-}
+

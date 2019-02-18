@@ -1,6 +1,13 @@
-fun <T> MutableList<T>.Swap(index1: Int, index2: Int)
+fun <T> MutableList<T>.Middle() : T?
 {
-    val temp = this[index1]
-    this[index1] = this[index2]
-    this[index2] = temp
+    if(this.count() == 0) return null
+
+    if(this.count() % 2 == 0)
+    {
+        return this[this.count() / 2 - 1]
+    }
+    else
+    {
+        return this[Math.ceil(this.count() / 2.0).toInt() - 1]
+    }
 }
